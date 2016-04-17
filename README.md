@@ -17,7 +17,7 @@ This library provides FFI bindings for [libinjection](https://github.com/client9
     local libinjection = require "resty.libinjection"
     
     -- simple API
-    local issqli, fingerprint = libinjection.sql(string)
+    local issqli, fingerprint = libinjection.sqli(string)
     
     -- context-specific bindings are also provided
     issql, fingerprint = libinjection.sqli_noquote(string)
