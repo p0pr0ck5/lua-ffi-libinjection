@@ -1,6 +1,6 @@
 ## Name
 
-lua-resty-libinjection - Lua FFI wrapper for libinjection
+lua-resty-libinjection - LuaJIT FFI bindings for libinjection
 
 ## Status
 
