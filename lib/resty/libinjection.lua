@@ -67,6 +67,8 @@ int libinjection_is_sqli(struct libinjection_sqli_state* sql_state);
 int libinjection_sqli(const char* s, size_t slen, char fingerprint[]);
 ]]
 
+_M.version = "0.1"
+
 local state_type = ffi.typeof("struct libinjection_sqli_state[1]")
 local lib, loaded
 
