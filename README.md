@@ -10,19 +10,23 @@ This library is in active development and is production ready
 
 This library provides FFI bindings for [libinjection](https://github.com/client9/libinjection/), a SQL/SQLi tokenizer and analyzer.
 
+## Installation
+
+Install this library as you would any other OpenResty lua module. The libinjection shared object file is required to live in your [lua_package_cpath](https://github.com/openresty/lua-nginx-module#lua_package_cpath), so you should symlink or copy the .so file to the appropriate location. For convenience a copy has been placed in the `lib` directory of this repo.
+
 ## Synopsis
 
 ```lua
   access_by_lua_block {
     local libinjection = require "resty.libinjection"
-    
+
     -- simple API
     local issqli, fingerprint = libinjection.sqli(string)
-    
+
     -- context-specific bindings are also provided
-    issql, fingerprint = libinjection.sqli_noquote(string)
-    issql, fingerprint = libinjection.sqli_singlequote(string)
-    issql, fingerprint = libinjection.sqli_doublequote(string)
+    issqli, fingerprint = libinjection.sqli_noquote(string)
+    issqli, fingerprint = libinjection.sqli_singlequote(string)
+    issqli, fingerprint = libinjection.sqli_doublequote(string)
   }
 ```
 
