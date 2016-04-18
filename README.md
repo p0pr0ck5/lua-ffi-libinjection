@@ -60,21 +60,21 @@ libinjection.sqli_noquote
 
 **syntax**: issqli, fingerprint = libinjection.sqli_noquote(string)
 
-Like [libinjection.sqli](libinjectionsqli), in the specific context of an "as-is" string.
+Like [libinjection.sqli](#libinjectionsqli), in the specific context of an "as-is" string.
 
 libinjection.sqli_singlequote
 -----------------------------
 
 **syntax**: issqli, fingerprint = libinjection.sqli_singlequote(string)
 
-Like [libinjection.sqli](libinjectionsqli), in the specific context of a single-quoted (`'`) string.
+Like [libinjection.sqli](#libinjectionsqli), in the specific context of a single-quoted (`'`) string.
 
 libinjection.sqli_doublequote
 -----------------------------
 
 **syntax**: issqli, fingerprint = libinjection.sqli_doublelequote(string)
 
-Like [libinjection.sqli](libinjectionsqli), in the specific context of a double-quoted (`"`) string.
+Like [libinjection.sqli](#libinjectionsqli), in the specific context of a double-quoted (`"`) string.
 
 libinjection.xss
 ----------------
@@ -88,35 +88,35 @@ libinjection.xss_data_state
 
 **syntax**: isxss = libinjection.xss_data_state(string)
 
-Like [libinjection.xss](libinjectionxss), but run with only the DATA_STATE flag.
+Like [libinjection.xss](#libinjectionxss), but run with only the DATA_STATE flag.
 
 libinjection.xss_noquote
 ------------------------
 
 **syntax**: isxss = libinjection.xss_noquote(string)
 
-Like [libinjection.xss](libinjectionxss), but run with only the VALUE_NO_QUOTE flag.
+Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_NO_QUOTE flag.
 
 libinjection.xss_singlequote
 ----------------------------
 
 **syntax**: isxss = libinjection.xss_singlequote(string)
 
-Like [libinjection.xss](libinjectionxss), but run with only the VALUE_SINGLE_QUOTE flag.
+Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_SINGLE_QUOTE flag.
 
 libinjection.xss_doublequote
 ----------------------------
 
 **syntax**: isxss = libinjection.xss_doublequote(string)
 
-Like [libinjection.xss](libinjectionxss), but run with only the VALUE_DOUBLE_QUOTE flag.
+Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_DOUBLE_QUOTE flag.
 
 libinjection.xss_backquote
 --------------------------
 
 **syntax**: isxss = libinjection.xss_backquote(string)
 
-Like [libinjection.xss](libinjectionxss), but run with only the VALUE_BACK_QUOTE flag.
+Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_BACK_QUOTE flag.
 
 License
 =======
