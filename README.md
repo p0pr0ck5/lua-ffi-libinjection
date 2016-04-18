@@ -51,70 +51,70 @@ Usage
 libinjection.sqli
 -----------------
 
-**syntax**: issqli, fingerprint = libinjection.sqli(string)
+**syntax**: *issqli, fingerprint = libinjection.sqli(string)*
 
 Given a string, returns a boolean *issqli* representing if SQLi was detected, and a string *fingerprint* representing the libinjection fingerprint detected. In most cases, this is the preferable option; second-level API bindings noted below may be slightly more efficient in specific contexts.
 
 libinjection.sqli_noquote
 -------------------------
 
-**syntax**: issqli, fingerprint = libinjection.sqli_noquote(string)
+**syntax**: *issqli, fingerprint = libinjection.sqli_noquote(string)*
 
 Like [libinjection.sqli](#libinjectionsqli), in the specific context of an "as-is" string.
 
 libinjection.sqli_singlequote
 -----------------------------
 
-**syntax**: issqli, fingerprint = libinjection.sqli_singlequote(string)
+**syntax**: *issqli, fingerprint = libinjection.sqli_singlequote(string)*
 
 Like [libinjection.sqli](#libinjectionsqli), in the specific context of a single-quoted (`'`) string.
 
 libinjection.sqli_doublequote
 -----------------------------
 
-**syntax**: issqli, fingerprint = libinjection.sqli_doublelequote(string)
+**syntax**: *issqli, fingerprint = libinjection.sqli_doublelequote(string)*
 
 Like [libinjection.sqli](#libinjectionsqli), in the specific context of a double-quoted (`"`) string.
 
 libinjection.xss
 ----------------
 
-**syntax** isxss = libinjection.xss(string)
+**syntax**: *isxss = libinjection.xss(string)*
 
 ALPHA version of XSS detector. Given a string, returns a boolean *isxss* denoting if XSS was detected. In most cases, this is the preferable option; second-level API bindings noted below may be slight more efficient in specific contexts.
 
 libinjection.xss_data_state
 ---------------------------
 
-**syntax**: isxss = libinjection.xss_data_state(string)
+**syntax**: *isxss = libinjection.xss_data_state(string)*
 
 Like [libinjection.xss](#libinjectionxss), but run with only the DATA_STATE flag.
 
 libinjection.xss_noquote
 ------------------------
 
-**syntax**: isxss = libinjection.xss_noquote(string)
+**syntax**: *isxss = libinjection.xss_noquote(string)*
 
 Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_NO_QUOTE flag.
 
 libinjection.xss_singlequote
 ----------------------------
 
-**syntax**: isxss = libinjection.xss_singlequote(string)
+**syntax**: *isxss = libinjection.xss_singlequote(string)*
 
 Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_SINGLE_QUOTE flag.
 
 libinjection.xss_doublequote
 ----------------------------
 
-**syntax**: isxss = libinjection.xss_doublequote(string)
+**syntax**: *isxss = libinjection.xss_doublequote(string)*
 
 Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_DOUBLE_QUOTE flag.
 
 libinjection.xss_backquote
 --------------------------
 
-**syntax**: isxss = libinjection.xss_backquote(string)
+**syntax**: *isxss = libinjection.xss_backquote(string)*
 
 Like [libinjection.xss](#libinjectionxss), but run with only the VALUE_BACK_QUOTE flag.
 
