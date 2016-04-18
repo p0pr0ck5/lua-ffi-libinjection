@@ -19,6 +19,13 @@ local FLAG_SQL_MYSQL    = 16
 -- enum lookup_type
 local LOOKUP_FINGERPRINT = 4
 
+-- enum html5_flags
+local DATA_STATE         = 0
+local VALUE_NO_QUOTE     = 1
+local VALUE_SINGLE_QUOTE = 2
+local VALUE_DOUBLE_QUOTE = 3
+local VALUE_BACK_QUOTE   = 4
+
 -- cached b_ors
 local QUOTE_NONE_SQL_ANSI    = b_or(FLAG_QUOTE_NONE, FLAG_SQL_ANSI)
 local QUOTE_NONE_SQL_MYSQL   = b_or(FLAG_QUOTE_NONE, FLAG_SQL_MYSQL)
@@ -65,6 +72,9 @@ void libinjection_sqli_init(struct libinjection_sqli_state * sf, const char *s, 
 int libinjection_is_sqli(struct libinjection_sqli_state* sql_state);
 
 int libinjection_sqli(const char* s, size_t slen, char fingerprint[]);
+
+int libinjection_is_xss(const char* s, size_t len, int flags);
+int libinjection_xss(const char* s, size_t slen);
 ]]
 
 _M.version = "0.1"
@@ -235,6 +245,82 @@ function _M.sqli(string)
 	local fingerprint = ffi_new("char [8]")
 
 	return lib.libinjection_sqli(string, #string, fingerprint) == 1, ffi_string(fingerprint)
+end
+
+--[[
+Secondary API: detects XSS in a string, given a context. Given a string, returns a boolean denoting if XSS was detected
+--]]
+local function _xss_contextwrapper(string, flag)
+	if (not loaded) then
+		if (not _loadlib()) then
+			return false
+		end
+	end
+
+	return lib.libinjection_is_xss(string, #string, flag) == 1
+end
+
+--[[
+Wrapper for second-level API with DATA_STATE flag
+--]]
+function _M.xss_data_state(string)
+	return _xss_contextwrapper(
+		string,
+		DATA_STATE
+	)
+end
+
+--[[
+Wrapper for second-level API with VALUE_NO_QUOTE flag
+--]]
+function _M.xss_noquote(string)
+	return _xss_contextwrapper(
+		string,
+		VALUE_NO_QUOTE
+	)
+end
+
+--[[
+Wrapper for second-level API with VALUE_SINGLE_QUOTE flag
+--]]
+function _M.xss_singlequote(string)
+	return _xss_contextwrapper(
+		string,
+		VALUE_SINGLE_QUOTE
+	)
+end
+
+--[[
+Wrapper for second-level API with VALUE_DOUBLE_QUOTE flag
+--]]
+function _M.xss_doublequote(string)
+	return _xss_contextwrapper(
+		string,
+		VALUE_DOUBLE_QUOTE
+	)
+end
+
+--[[
+Wrapper for second-level API with VALUE_BACK_QUOTE flag
+--]]
+function _M.xss_backquote(string)
+	return _xss_contextwrapper(
+		string,
+		VALUE_BACK_QUOTE
+	)
+end
+
+--[[
+ALPHA version of XSS detector. Given a string, returns a boolean denoting if XSS was detected
+--]]
+function _M.xss(string)
+	if (not loaded) then
+		if (not _loadlib()) then
+			return false
+		end
+	end
+
+	return lib.libinjection_xss(string, #string) == 1
 end
 
 return _M
