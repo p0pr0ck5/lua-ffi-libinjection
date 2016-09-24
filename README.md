@@ -16,7 +16,7 @@ This library provides FFI bindings for [libinjection](https://github.com/client9
 Installation
 ============
 
-Install this library as you would any other OpenResty lua module. The libinjection shared object file is required to live in your [lua_package_cpath](https://github.com/openresty/lua-nginx-module#lua_package_cpath), so you should symlink or copy the .so file to the appropriate location. For convenience a copy has been placed in the `lib` directory of this repo.
+Install this library as you would any other OpenResty lua module. The libinjection shared object file is required to live in your [lua_package_cpath](https://github.com/openresty/lua-nginx-module#lua_package_cpath), so you should symlink or copy the .so file to the appropriate location.
 
 Synopsis
 ========
