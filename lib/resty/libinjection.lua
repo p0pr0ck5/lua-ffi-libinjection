@@ -77,7 +77,7 @@ int libinjection_is_xss(const char* s, size_t len, int flags);
 int libinjection_xss(const char* s, size_t slen);
 ]]
 
-_M.version = "0.1"
+_M.version = "0.1.1"
 
 local state_type = ffi.typeof("struct libinjection_sqli_state[1]")
 local lib, loaded
