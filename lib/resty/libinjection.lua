@@ -105,7 +105,7 @@ local function _loadlib()
 			end
 		end
 
-		lib = ffi.load(path)
+		lib = ffi_load(path)
 
 		if (lib) then
 			loaded = true
