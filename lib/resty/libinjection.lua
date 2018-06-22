@@ -3,8 +3,6 @@ local _M = {}
 local bit = require "bit"
 local ffi = require "ffi"
 
-local b_or       = bit.bor
-local ffi_load   = ffi.load
 local ffi_new    = ffi.new
 local ffi_string = ffi.string
 
@@ -26,12 +24,12 @@ local VALUE_SINGLE_QUOTE = 2
 local VALUE_DOUBLE_QUOTE = 3
 local VALUE_BACK_QUOTE   = 4
 
--- cached b_ors
-local QUOTE_NONE_SQL_ANSI    = b_or(FLAG_QUOTE_NONE, FLAG_SQL_ANSI)
-local QUOTE_NONE_SQL_MYSQL   = b_or(FLAG_QUOTE_NONE, FLAG_SQL_MYSQL)
-local QUOTE_SINGLE_SQL_ANSI  = b_or(FLAG_QUOTE_SINGLE, FLAG_SQL_ANSI)
-local QUOTE_SINGLE_SQL_MYSQL = b_or(FLAG_QUOTE_SINGLE, FLAG_SQL_MYSQL)
-local QUOTE_DOUBLE_SQL_MYSQL = b_or(FLAG_QUOTE_DOUBLE, FLAG_SQL_MYSQL)
+-- cached ORs
+local QUOTE_NONE_SQL_ANSI    = bit.bor(FLAG_QUOTE_NONE, FLAG_SQL_ANSI)
+local QUOTE_NONE_SQL_MYSQL   = bit.bor(FLAG_QUOTE_NONE, FLAG_SQL_MYSQL)
+local QUOTE_SINGLE_SQL_ANSI  = bit.bor(FLAG_QUOTE_SINGLE, FLAG_SQL_ANSI)
+local QUOTE_SINGLE_SQL_MYSQL = bit.bor(FLAG_QUOTE_SINGLE, FLAG_SQL_MYSQL)
+local QUOTE_DOUBLE_SQL_MYSQL = bit.bor(FLAG_QUOTE_DOUBLE, FLAG_SQL_MYSQL)
 
 -- libibjection.so
 ffi.cdef[[
@@ -143,7 +141,7 @@ local function _sqli_contextwrapper(string, char, flag1, flag2)
 	local issqli, lookup, sqli_state
 
 	-- allocate a new libinjection_sqli_state struct
-	sqli_state = ffi.new(state_type)
+	sqli_state = ffi_new(state_type)
 
 	-- init the state
 	lib.libinjection_sqli_init(
